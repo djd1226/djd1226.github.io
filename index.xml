@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HOME on 雨过天晴</title>
+    <link>https://djd1226.github.io/</link>
+    <description>Recent content in HOME on 雨过天晴</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© Djd1226</copyright>
+    <lastBuildDate>Thu, 21 Dec 2023 17:18:46 +0000</lastBuildDate>
+    <atom:link href="https://djd1226.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>盒子折腾记 第一篇：</title>
+      <link>https://djd1226.github.io/post/231221/</link>
+      <pubDate>Thu, 21 Dec 2023 17:18:46 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/231221/</guid>
+      <description>&lt;p&gt;盒子折腾记 第一篇：南鲸晶晨S905X3芯片盒子刷X96 MAX PLUS2固件（SLIMBOX）&#xA;&lt;img src=&#34;https://pub-c1f712328d3c408c9b94b67eb316fc7b.r2.dev/photo/2023/12/92a45ba55c2f369b8de2b333ed0a4b3f.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>贵州小七孔游记</title>
+      <link>https://djd1226.github.io/post/23-121/</link>
+      <pubDate>Thu, 07 Dec 2023 04:56:40 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/23-121/</guid>
+      <description>&lt;p&gt;贵州小七孔，位于中国贵州省荔波县境内，是一处美不胜收的溶洞景区，因其七个孔道而得名。&#xA;&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/djd1226/image@master//2023/06f2487d5687e2f68ca97d37377ec46e.jpg&#34; alt=&#34;小七孔&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>折腾了两天免费图床，最终还是选了Github</title>
+      <link>https://djd1226.github.io/post/23-12/</link>
+      <pubDate>Wed, 06 Dec 2023 04:56:40 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/23-12/</guid>
+      <description>&lt;p&gt;最近，我陷入了一个新的兴趣领域：折腾免费图床。&#xA;&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/djd1226/image@master/2312IMG_20230127_122228.jpg&#34; alt=&#34;2312IMG_20230127_122228&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>模板-短代码</title>
+      <link>https://djd1226.github.io/post/example3/</link>
+      <pubDate>Sat, 02 Dec 2023 14:44:12 +0100</pubDate>
+      <guid>https://djd1226.github.io/post/example3/</guid>
+      <description>&lt;p&gt;在主题中插入短代码&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>模板-工作</title>
+      <link>https://djd1226.github.io/portfolio/example1/</link>
+      <pubDate>Sat, 02 Dec 2023 15:10:09 +0200</pubDate>
+      <guid>https://djd1226.github.io/portfolio/example1/</guid>
+      <description>我相信生活中的每一刻都有着故事，而视频是记录这些故事的最好方式之一。通过这个博客，我希望与你分享生活的点滴，让你感受到生命中那些温暖、有趣、感人的瞬间。这里不仅是我的日志，更是一个与你互动、分享心情的平台。&#xA;我是一个热爱生活的普通人，喜欢用镜头记录下生活中的美好瞬间。我的博客不追求完美，而是追求真实，因为真实才是最打动人心的。&#xA;一起分享生活的点滴吧！ </description>
+    </item>
+    <item>
+      <title>模板-无图</title>
+      <link>https://djd1226.github.io/post/example1/</link>
+      <pubDate>Sat, 02 Dec 2023 14:55:30 +0200</pubDate>
+      <guid>https://djd1226.github.io/post/example1/</guid>
+      <description>&lt;p&gt;这是一份简单的模板示例&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>模板-简历</title>
+      <link>https://djd1226.github.io/post/example2/</link>
+      <pubDate>Sat, 02 Dec 2023 14:49:05 +0200</pubDate>
+      <guid>https://djd1226.github.io/post/example2/</guid>
+      <description>&lt;p&gt;这是一份个人简历的模板示例，下列代码是文件标头&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;https://djd1226.github.io/post/images/portfolio-example.png&#34;&#xA;         alt=&#34;Example of Portfolio page&#34;/&gt;&lt;figcaption&gt;&#xA;            &lt;p&gt;Example of Portfolio page&lt;/p&gt;&#xA;        &lt;/figcaption&gt;&#xA;&lt;/figure&gt;</description>
+    </item>
+  </channel>
+</rss>
