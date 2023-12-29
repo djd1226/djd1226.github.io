@@ -3,16 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://djd1226.github.io/</loc>
-    <lastmod>2023-12-27T05:28:31+00:00</lastmod>
+    <lastmod>2023-12-29T05:37:40+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://djd1226.github.io/post/23_12_27/</loc>
-    <lastmod>2023-12-27T05:28:31+00:00</lastmod>
+    <loc>https://djd1226.github.io/post/23_12_29/</loc>
+    <lastmod>2023-12-29T05:37:40+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://djd1226.github.io/post/</loc>
+    <lastmod>2023-12-29T05:37:40+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://djd1226.github.io/post/23_12_27/</loc>
     <lastmod>2023-12-27T05:28:31+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

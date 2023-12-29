@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© Djd1226</copyright>
-    <lastBuildDate>Wed, 27 Dec 2023 05:28:31 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 Dec 2023 05:37:40 +0000</lastBuildDate>
     <atom:link href="https://djd1226.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>提升Anki学习效率：自制卡牌的高级技巧</title>
+      <link>https://djd1226.github.io/post/23_12_29/</link>
+      <pubDate>Fri, 29 Dec 2023 05:37:40 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/23_12_29/</guid>
+      <description>&lt;p&gt;随着Anki在语言学习中的广泛应用，自制卡牌成为提高学习效率的关键。在本文中，我们将介绍两种高级技巧，分别适用于英文和中文文章。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>使用Hugo搭建个人网站并推送到GitHub Pages</title>
       <link>https://djd1226.github.io/post/23_12_27/</link>
