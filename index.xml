@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© Djd1226</copyright>
-    <lastBuildDate>Sat, 30 Dec 2023 12:20:26 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 Dec 2023 12:53:50 +0000</lastBuildDate>
     <atom:link href="https://djd1226.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编写一个简单的Shell脚本来执行Hugo任务</title>
+      <link>https://djd1226.github.io/post/23_12_31/</link>
+      <pubDate>Sun, 31 Dec 2023 12:53:50 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/23_12_31/</guid>
+      <description>&lt;p&gt;请将以下内容保存到一个文件（比如&lt;code&gt;myscript.sh&lt;/code&gt;）&lt;/p&gt;</description>
+    </item>
     <item>
       <title>使用frp进行内网穿透并结合Cloudflare和Cloudns实现免费域名访问</title>
       <link>https://djd1226.github.io/post/23_12_30/</link>
