@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© Djd1226</copyright>
-    <lastBuildDate>Fri, 29 Dec 2023 05:37:40 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Dec 2023 12:20:26 +0000</lastBuildDate>
     <atom:link href="https://djd1226.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用frp进行内网穿透并结合Cloudflare和Cloudns实现免费域名访问</title>
+      <link>https://djd1226.github.io/post/23_12_30/</link>
+      <pubDate>Sat, 30 Dec 2023 12:20:26 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/23_12_30/</guid>
+      <description>&lt;p&gt;随着互联网的发展，内网穿透成为许多技术爱好者和开发者解决远程访问、演示项目等问题的一种有效方式。本文将介绍如何使用frp进行内网穿透，并结合Cloudflare和Cloudns提供的免费域名服务，使你的内网服务能够通过互联网访问。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://pub-205cbc55af97469188f80389cf5dc778.r2.dev/231230-images.png&#34; alt=&#34;231230-images.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>提升Anki学习效率：自制卡牌的高级技巧</title>
       <link>https://djd1226.github.io/post/23_12_29/</link>
