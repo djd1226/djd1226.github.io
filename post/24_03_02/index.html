@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'><head>
-  <title>提升Anki学习效率：自制卡牌的高级技巧 - 雨过天晴</title>
-  <link rel='canonical' href='https://djd1226.github.io/post/23_12_29/' />
+  <title>旅游日志制作：PR（Adobe Premiere R） - 雨过天晴</title>
+  <link rel='canonical' href='https://djd1226.github.io/post/24_03_02/' />
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <meta name='description' content='Exaplanation on the shortcodes with personal-web' />
@@ -19,18 +19,18 @@
 <link rel="stylesheet" href="https://djd1226.github.io/sass/style.min.eabe1aa4bd266a15f7b39b122bd6a5cc75cb067e5373631ac21d7815d6240d6f.css" integrity="sha256-6r4apL0mahX3s5sSK9alzHXLBn5Tc2Mawh14FdYkDW8=" media="screen">
 <link rel="stylesheet" href="https://djd1226.github.io/syntax.min.css" integrity="" media="screen">
 
-  <meta property="og:title" content="提升Anki学习效率：自制卡牌的高级技巧" />
+  <meta property="og:title" content="旅游日志制作：PR（Adobe Premiere R）" />
 <meta property="og:description" content="Exaplanation on the shortcodes with personal-web" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://djd1226.github.io/post/23_12_29/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-12-29T05:37:40+00:00" />
-<meta property="article:modified_time" content="2023-12-29T05:37:40+00:00" />
+<meta property="og:url" content="https://djd1226.github.io/post/24_03_02/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-03-02T13:17:54+00:00" />
+<meta property="article:modified_time" content="2024-03-02T13:17:54+00:00" />
 
 
-  <meta itemprop="name" content="提升Anki学习效率：自制卡牌的高级技巧">
-<meta itemprop="description" content="Exaplanation on the shortcodes with personal-web"><meta itemprop="datePublished" content="2023-12-29T05:37:40+00:00" />
-<meta itemprop="dateModified" content="2023-12-29T05:37:40+00:00" />
-<meta itemprop="wordCount" content="99">
+  <meta itemprop="name" content="旅游日志制作：PR（Adobe Premiere R）">
+<meta itemprop="description" content="Exaplanation on the shortcodes with personal-web"><meta itemprop="datePublished" content="2024-03-02T13:17:54+00:00" />
+<meta itemprop="dateModified" content="2024-03-02T13:17:54+00:00" />
+<meta itemprop="wordCount" content="16">
 <meta itemprop="keywords" content="" />
 </head>
 <body>
@@ -206,7 +206,7 @@
 
 
 <span  class="active">
-  <a href="https://djd1226.github.io/post/23_12_29/">提升Anki学习效率：自制卡牌的高级技巧</a>
+  <a href="https://djd1226.github.io/post/24_03_02/">旅游日志制作：PR（Adobe Premiere R）</a>
   
 </span>
 
@@ -215,7 +215,7 @@
     
     <main id="content" class="post">
 
-<h1>提升Anki学习效率：自制卡牌的高级技巧</h1>
+<h1>旅游日志制作：PR（Adobe Premiere R）</h1>
 <div class="reading-time">
   <div class="icon">
   <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
@@ -237,47 +237,28 @@
   </svg>
 </div>
 
-  <span>December 29, 2023</span>
+  <span>March 2, 2024</span>
 </div>
 
-<p>随着Anki在语言学习中的广泛应用，自制卡牌成为提高学习效率的关键。在本文中，我们将介绍两种高级技巧，分别适用于英文和中文文章。</p>
-<h3 id="1-用python脚本插入符号并挖空英文单词">1. 用Python脚本插入@符号并挖空英文单词</h3>
-<p><font color=red size=5>  在英文学习中，有效地记忆单词是至关重要的。为了提高Anki卡牌的质量，我们可以使用Python脚本自动插入@符号，并结合正则表达式挖空单词。</font></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Python脚本示例</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">csv</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">insert_at_sign_randomly</span><span class="p">(</span><span class="n">input_csv</span><span class="p">,</span> <span class="n">output_csv</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_csv</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">input_file</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_csv</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">new_row</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1"># 判断是否为英文单词</span>
-</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[a-zA-Z]&#39;</span><span class="p">,</span> <span class="n">cell</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">words</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+|[^\w\s]+&#39;</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">modified_words</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl">                        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">                            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[a-zA-Z]&#39;</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">                                <span class="c1"># 在单词中的随机位置插入&#34;@&#34;</span>
-</span></span><span class="line"><span class="cl">                                <span class="n">word_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                                <span class="n">at_sign_position</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">)</span>
-</span></span><span class="line"><span class="cl">                                <span class="n">word_list</span><span class="p">[</span><span class="n">at_sign_position</span><span class="p">:</span><span class="n">at_sign_position</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;@&#39;</span>
-</span></span><span class="line"><span class="cl">                                <span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                            <span class="n">modified_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">cell</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">modified_words</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">new_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">new_row</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 替换&#39;input.csv&#39;和&#39;output.csv&#39;为你的输入和输出文件的路径</span>
-</span></span><span class="line"><span class="cl"><span class="n">insert_at_sign_randomly</span><span class="p">(</span><span class="s1">&#39;./english/unit-all.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;./english/out/unit-all.csv&#39;</span><span class="p">)</span>
-</span></span></code></pre></div><h3 id="2-在电脑端用红色字体标注中文重点">2. 在电脑端用红色字体标注中文重点</h3>
-<p>对于中文文章，强调重点内容能够提高记忆深度。在电脑端，我们可以使用红色字体标注重点，并通过正则表达式挖空。</p>
-<p>通过结合这两种技巧，我们可以在Anki中创建更具效果的卡牌，提高学习效率。记得定期复习，享受学习的过程！</p>
+<p>对于新手来说，PR（Adobe Premiere ）是一个功能强大的工具，帮助您制作出令人印象深刻的视频。在本文中，我将记录我制作旅游日志的学习过程。</p>
+<p><img src="https://pub-205cbc55af97469188f80389cf5dc778.r2.dev/24331709398828582.png" alt="24331709398828582.png"></p>
+<h2 id="第一步剪辑和编辑">第一步：剪辑和编辑</h2>
+<p>要众多视频素材挑选出自己需要的素材，是一个耗时的工作。</p>
+<ol>
+<li>先在素材箱中选择按时间排列素材，然后全部拖入视频轨道中。</li>
+<li>使用快捷键w和q对素材进行剪辑，注意入点和出点的使用，以及快捷键，和；的用法（特别是片头的精彩瞬间制作）。</li>
+<li>现在开始对素材进行剪辑和编辑。您可以调整照片和视频的顺序，记得使用快捷键Ctrl+Alt的替换位置和复制操作。添加过渡效果（Ctrl+D），具体可以搜索一下。PR提供了许多预设效果和过渡效果，让您轻松实现专业的编辑效果。</li>
+</ol>
+<p><img src="https://pub-205cbc55af97469188f80389cf5dc778.r2.dev/24331709399062476.jpg" alt="24331709399062476.jpg"></p>
+<h2 id="第二步选择音乐">第二步：选择音乐</h2>
+<p>选择一段适合您旅游日志氛围的音乐，我个人比较推荐英文的乡村音乐，我在网易云里面收藏了一些歌单，可以去看看。记得先不要删除人声，搜索pr自动背景音乐可以找到使用方法。留一部分原音可提高影片的真实感！音效可以临时搜索下载。</p>
+<h2 id="第三步添加文本和标题">第三步：添加文本和标题</h2>
+<p>为了让观众更好地理解您的旅行经历，您可以在视频中添加文本和标题。PR提供了丰富的文本样式和动画效果，我自己也下载了一下插件，可以使文字更加生动有趣。</p>
+<h2 id="第四步导出和分享">第四步：导出和分享</h2>
+<p>当您完成了对视频的编辑和调整后，就可以将其导出为最终的视频文件。PR支持多种视频格式和分辨率，我一般选择中等码率的mp4格式，你也可以根据您的需要选择合适的设置。然后，您可以将视频分享到社交媒体平台上（如西瓜视频和B站），与朋友们分享您的精彩旅行经历！</p>
+<p>制作一部旅游日志可能看起来有些复杂，但是借助PR的简单易用性，您可以轻松实现您的创意。不断尝试和练习，您会发现自己越来越熟练，制作出越来越精彩的视频作品。祝您旅途愉快，创作成功！</p>
+<hr>
+<p>希望这篇文章能够对您有所帮助！如果您有任何问题或需要进一步的帮助，请随时告诉我。</p>
 
     </main>
   </div>

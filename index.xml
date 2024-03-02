@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© Djd1226</copyright>
-    <lastBuildDate>Fri, 05 Jan 2024 13:39:59 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Mar 2024 13:17:54 +0000</lastBuildDate>
     <atom:link href="https://djd1226.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>旅游日志制作：PR（Adobe Premiere R）</title>
+      <link>https://djd1226.github.io/post/24_03_02/</link>
+      <pubDate>Sat, 02 Mar 2024 13:17:54 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/24_03_02/</guid>
+      <description>&lt;p&gt;对于新手来说，PR（Adobe Premiere ）是一个功能强大的工具，帮助您制作出令人印象深刻的视频。在本文中，我将记录我制作旅游日志的学习过程。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://pub-205cbc55af97469188f80389cf5dc778.r2.dev/24331709398828582.png&#34; alt=&#34;24331709398828582.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>使用Python实现自动化：轻松操控Hugo和Git</title>
       <link>https://djd1226.github.io/post/24_01_051/</link>
