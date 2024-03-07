@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© Djd1226</copyright>
-    <lastBuildDate>Sat, 02 Mar 2024 13:17:54 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Mar 2024 12:21:20 +0000</lastBuildDate>
     <atom:link href="https://djd1226.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>与GitHub仓库同步</title>
+      <link>https://djd1226.github.io/post/24_03_07/</link>
+      <pubDate>Thu, 07 Mar 2024 12:21:20 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/24_03_07/</guid>
+      <description>&lt;p&gt;在本地建立一个与GitHub仓库同步的仓库，你可以按照以下步骤操作：&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://pub-c1f712328d3c408c9b94b67eb316fc7b.r2.dev/photo/2024/03/ab4d7bae650ab0ff8f19d1a60cb5abc6.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>旅游日志制作：PR（Adobe Premiere R）</title>
       <link>https://djd1226.github.io/post/24_03_02/</link>
