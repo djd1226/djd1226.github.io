@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© Djd1226</copyright>
-    <lastBuildDate>Wed, 03 Apr 2024 13:23:51 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Apr 2024 06:13:10 +0000</lastBuildDate>
     <atom:link href="https://djd1226.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>部署免费的GPT-API，实现GPT自由！</title>
+      <link>https://djd1226.github.io/post/24_04_04/</link>
+      <pubDate>Thu, 04 Apr 2024 06:13:10 +0000</pubDate>
+      <guid>https://djd1226.github.io/post/24_04_04/</guid>
+      <description>&lt;p&gt;render部署GPT-API教程&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-登录render-1点击-new选择web-service&#34;&gt;1 登录render 1，点击 New，选择Web Service&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://pub-c1f712328d3c408c9b94b67eb316fc7b.r2.dev/photo/2024/04/7b0c7b37a7ced283bd712c2e6724bb8d.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>学习部署FreeGPT35</title>
       <link>https://djd1226.github.io/post/24_04_03/</link>
