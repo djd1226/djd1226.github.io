@@ -14,6 +14,49 @@
     <lastBuildDate>Sun, 20 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://djd1226.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>vaultwarden直接deb文件安装</title>
+      <link>https://djd1226.github.io/posts/2025-07-201/</link>
+      <pubDate>Sun, 20 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://djd1226.github.io/posts/2025-07-201/</guid>
+      <description>&lt;p&gt;vaultwarden&lt;code&gt;.deb&lt;/code&gt; 包&lt;strong&gt;只包含了后端程序&lt;/strong&gt;，它需要另一个独立的包来提供前端界面。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;-解决方案-&#34;&gt;## 解决方案 🛠️&lt;/h3&gt;
+&lt;p&gt;最直接的解决方法就是&lt;strong&gt;安装缺失的前端包&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;方案一安装缺失的前端包-推荐&#34;&gt;&lt;strong&gt;方案一：安装缺失的前端包 (推荐)&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;您需要回到最初下载 &lt;code&gt;.deb&lt;/code&gt; 包的那个页面，找到并下载 &lt;code&gt;vaultwarden-webvault&lt;/code&gt; 这个包。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载前端包
+&lt;a href=&#34;https://github.com/dani-garcia/vaultwarden/wiki/Third-party-packages&#34;&gt;第三方软件包&lt;/a&gt;
+&lt;a href=&#34;https://build.opensuse.org/package/show/home:Masgalor:Vaultwarden/vaultwarden&#34;&gt;后端包&lt;/a&gt;
+&lt;a href=&#34;https://build.opensuse.org/package/show/home:Masgalor:Vaultwarden/vaultwarden-webvault&#34;&gt;前端包&lt;/a&gt;
+登陆：rain1226:ofen
+在您下载 vaultwarden_1.34.1-1+1.1_amd64_ubuntu22.deb 的地方，应该还有一个类似下面这样命名的文件：&lt;/p&gt;
+&lt;p&gt;vaultwarden-webvault_2024.5.0_all.deb&lt;/p&gt;
+&lt;p&gt;(版本号 2024.5.0 可能会不同，架构通常是 all 因为它只包含网页文件)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装前端包&lt;/p&gt;
+&lt;p&gt;使用 dpkg 命令安装它。这个包通常没有复杂的依赖。&lt;/p&gt;
+&lt;p&gt;Bash&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo dpkg -i vaultwarden-webvault_xxxx_all.deb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(请将 &lt;code&gt;xxxx&lt;/code&gt; 替换为您下载的实际文件名)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启 Vaultwarden 服务&lt;/p&gt;
+&lt;p&gt;安装好前端文件后，它们就会出现在后端程序期望的位置。现在只需重启服务即可。&lt;/p&gt;
+&lt;p&gt;Bash&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart vaultwarden
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;再次检查状态&lt;/p&gt;
+&lt;p&gt;等待几秒钟，然后再次检查服务状态，这次应该就是 active (running) 了。&lt;/p&gt;
+&lt;p&gt;Bash&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl status vaultwarden
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
       <title>编译Rust之Stump电子书库</title>
       <link>https://djd1226.github.io/posts/2025-07-20/</link>
       <pubDate>Sun, 20 Jul 2025 00:00:00 +0000</pubDate>
