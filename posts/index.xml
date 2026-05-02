@@ -2,22 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Rain Blog</title>
-    <link>https://djd1226.github.io/posts/</link>
+    <link>/posts/</link>
     <description>Recent content in Posts on Rain Blog</description>
     <image>
       <title>Rain Blog</title>
-      <url>https://djd1226.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://djd1226.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.157.0</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://djd1226.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cc-connect &#43; Claude Code Route</title>
+      <link>/posts/2026-05-02/</link>
+      <pubDate>Sat, 02 May 2026 00:00:00 +0000</pubDate>
+      <guid>/posts/2026-05-02/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;配置完成日期&lt;/strong&gt;:2026-05-01&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-架构总览&#34;&gt;1. 架构总览&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──────────────┐    Telegram API    ┌────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│ Telegram 客户端│ ─────────────────&amp;gt; │ Telegram Bot   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│ (你的手机)    │  @my_connect_bot
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└──────────────┘                    └───────┬────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                            │ WebSocket / Long polling
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                            ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              ┌──────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ cc-connect (systemd守护)  │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - 监听 Telegram 消息       │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - 调度 Claude Code 子进程  │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - allow_from 鉴权          │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              └──────────────┬───────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                             │ spawn: ccr code --verbose ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                             ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              ┌──────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ ccr code (shim)           │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - 强制覆盖 ANTHROPIC_*    │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - 检测并自动拉起 ccr 服务 │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - exec claude             │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              └──────────────┬───────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                             │ ANTHROPIC_BASE_URL=http://127.0.0.1:3456
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                             ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              ┌──────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ claude (Claude Code CLI)  │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - stream-json 协议        │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              └──────────────┬───────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                             │ HTTP (anthropic 协议)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                             ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              ┌──────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ ccr 服务 (127.0.0.1:3456) │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - 协议转换 (anthropic→OpenAI) │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ - 路由到上游 provider     │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              └──────────────┬───────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                             │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                             ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              ┌──────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ 上游 LLM provider         │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              │ (LongCat / GLM / Grok 等) │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                              └──────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;每个组件的&lt;strong&gt;单一职责&lt;/strong&gt;:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ollama API 使用指南</title>
-      <link>https://djd1226.github.io/posts/2026-04-13/</link>
+      <link>/posts/2026-04-13/</link>
       <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-04-13/</guid>
+      <guid>/posts/2026-04-13/</guid>
       <description>&lt;h2 id=&#34;-服务信息&#34;&gt;📋 服务信息&lt;/h2&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -331,9 +382,9 @@
     </item>
     <item>
       <title>Hugo → WordPress 自动同步方案总结</title>
-      <link>https://djd1226.github.io/posts/2026-04-12/</link>
+      <link>/posts/2026-04-12/</link>
       <pubDate>Sun, 12 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-04-12/</guid>
+      <guid>/posts/2026-04-12/</guid>
       <description>&lt;h2 id=&#34;一目标&#34;&gt;一、目标&lt;/h2&gt;
 &lt;p&gt;每次运行 Hugo 博客脚本发布新文章时，&lt;strong&gt;自动将该文章同步到 WordPress&lt;/strong&gt; 作为备份。&lt;/p&gt;
 &lt;hr&gt;
@@ -379,9 +430,9 @@
     </item>
     <item>
       <title>Python/PHP 服务适配sv66容器</title>
-      <link>https://djd1226.github.io/posts/2026-04-02/</link>
+      <link>/posts/2026-04-02/</link>
       <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-04-02/</guid>
+      <guid>/posts/2026-04-02/</guid>
       <description>&lt;h2 id=&#34;1-方案目标&#34;&gt;1. 方案目标&lt;/h2&gt;
 &lt;p&gt;在 &lt;code&gt;sv66&lt;/code&gt;（无 root、共享容器环境）上部署轻量 Python/PHP 服务，并通过 Cloudflare 反向代理/CDN 对外提供稳定访问。&lt;/p&gt;
 &lt;p&gt;核心链路：&lt;/p&gt;
@@ -453,9 +504,9 @@
     </item>
     <item>
       <title>supabase 免费版</title>
-      <link>https://djd1226.github.io/posts/2026-03-30/</link>
+      <link>/posts/2026-03-30/</link>
       <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-03-30/</guid>
+      <guid>/posts/2026-03-30/</guid>
       <description>&lt;p&gt;官方规则： Supabase 免费版通常在 1 周（7 天） 没有任何活动后会将项目设为“暂停（Paused）”。
 Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据库发送了请求，并且数据库返回了响应（即便只是返回一个空数组或一行数据），系统就会判定你的项目处于“活跃”状态。&lt;/p&gt;
 &lt;hr&gt;
@@ -491,9 +542,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>SSH_skills高级运维技能</title>
-      <link>https://djd1226.github.io/posts/2026-03-27/</link>
+      <link>/posts/2026-03-27/</link>
       <pubDate>Fri, 27 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-03-27/</guid>
+      <guid>/posts/2026-03-27/</guid>
       <description>&lt;p&gt;这份 &lt;code&gt;SKILL.md&lt;/code&gt; 整体结构非常清晰，核心原则抓得很准。但正如你所提到的，你的主机环境跨度很大，尤其是 &lt;strong&gt;Termux&lt;/strong&gt; 与标准的 &lt;strong&gt;Ubuntu/Debian/Armbian&lt;/strong&gt; 在底层架构上有巨大的差异（比如文件系统路径、包管理器、服务管理工具以及权限模型）。&lt;/p&gt;
 &lt;p&gt;如果不在执行前强制确认环境，AI 极容易在 Termux 里执行 &lt;code&gt;systemctl&lt;/code&gt; 或试图向 &lt;code&gt;/etc/&lt;/code&gt; 写文件，从而导致不断报错。&lt;/p&gt;
 &lt;p&gt;我为你优化了这份配置，重点强化了&lt;strong&gt;环境侦测机制&lt;/strong&gt;和&lt;strong&gt;差异化处理逻辑&lt;/strong&gt;。&lt;/p&gt;
@@ -548,9 +599,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>大模型标准计费解读</title>
-      <link>https://djd1226.github.io/posts/2026-03-23/</link>
+      <link>/posts/2026-03-23/</link>
       <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-03-23/</guid>
+      <guid>/posts/2026-03-23/</guid>
       <description>&lt;p&gt;这类计费被称为“按量计费”（Pay-as-you-go），即&lt;strong&gt;按使用量付费，没有月租&lt;/strong&gt;。为了让你直观理解，我们可以把 Token 类比成“字数”（通常 1M Tokens 约为 75 万个英文单词或 50 万个汉字）。&lt;/p&gt;
 &lt;p&gt;以下是四个维度的详细解读：&lt;/p&gt;
 &lt;hr&gt;
@@ -588,9 +639,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>Claude Code Router (CCR)路由配置指南</title>
-      <link>https://djd1226.github.io/posts/2026-03-17/</link>
+      <link>/posts/2026-03-17/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-03-17/</guid>
+      <guid>/posts/2026-03-17/</guid>
       <description>&lt;p&gt;你可以把 CCR 想象成一个**“智能包工头”**。当你在终端里使用 &lt;code&gt;ccr code&lt;/code&gt; 敲代码时，官方的 Claude Code 程序会在后台发出各种不同类型的请求。CCR 会拦截这些请求，并根据你 &lt;code&gt;Router&lt;/code&gt; 里的规则，自动把任务分配给最合适的模型。&lt;/p&gt;
 &lt;p&gt;具体来说，这些路由规则是这样在实际中发挥作用的：&lt;/p&gt;
 &lt;h3 id=&#34;1-default默认路由&#34;&gt;1. &lt;code&gt;default&lt;/code&gt;（默认路由）&lt;/h3&gt;
@@ -630,9 +681,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>在 Termux 中使用 `pure-ftpd` 搭建FTP</title>
-      <link>https://djd1226.github.io/posts/2026-03-04/</link>
+      <link>/posts/2026-03-04/</link>
       <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-03-04/</guid>
+      <guid>/posts/2026-03-04/</guid>
       <description>&lt;h2 id=&#34;如何在-termux-中使用-pure-ftpd-搭建一个安全的-ftp-服务&#34;&gt;如何在 Termux 中使用 &lt;code&gt;pure-ftpd&lt;/code&gt; 搭建一个安全的 FTP 服务。&lt;/h2&gt;
 &lt;h3 id=&#34;1-安装-pure-ftpd&#34;&gt;1. 安装 &lt;code&gt;pure-ftpd&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;在 Termux 中使用 &lt;code&gt;pkg install&lt;/code&gt; 命令安装 &lt;code&gt;pure-ftpd&lt;/code&gt;。&lt;/p&gt;
@@ -651,9 +702,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>在 Debian 服务器上部署 `frps`（服务端）</title>
-      <link>https://djd1226.github.io/posts/2026-02-01/</link>
+      <link>/posts/2026-02-01/</link>
       <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2026-02-01/</guid>
+      <guid>/posts/2026-02-01/</guid>
       <description>&lt;hr&gt;
 &lt;h3 id=&#34;第一步检查系统架构&#34;&gt;第一步：检查系统架构&lt;/h3&gt;
 &lt;p&gt;首先，确认你 Debian 服务器的 CPU 架构，以便下载正确的版本：&lt;/p&gt;
@@ -697,9 +748,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>Debian 系统精簡</title>
-      <link>https://djd1226.github.io/posts/2025-12-12/</link>
+      <link>/posts/2025-12-12/</link>
       <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-12-12/</guid>
+      <guid>/posts/2025-12-12/</guid>
       <description>&lt;p&gt;这两个目录是 Debian 系统中常见的大户，进一步清理可以重点针对它们。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;1-usr-目录清理建议&#34;&gt;1. &lt;code&gt;/usr&lt;/code&gt; 目录清理建议&lt;/h1&gt;
@@ -751,9 +802,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>提升PR剪辑效率的二十二个必备技巧</title>
-      <link>https://djd1226.github.io/posts/2025-08-24/</link>
+      <link>/posts/2025-08-24/</link>
       <pubDate>Sun, 24 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-08-24/</guid>
+      <guid>/posts/2025-08-24/</guid>
       <description>&lt;p&gt;在之前的文章中，已经向大家介绍了PR的小技巧，许多小伙伴直呼需要更多这样的干货，pr软件是自带很多小工具，可以为制作提升很高的效率。这些小工具如果能全部掌握，就相当于十八般兵器，随便拿出来一两个，都能让剪辑工作如虎添翼。如果不能全部掌握，随便几个小技巧也能让你感叹软件的流畅。&lt;/p&gt;
 &lt;h1 id=&#34;技巧一快速波纹剪辑shiftwq&#34;&gt;&lt;strong&gt;技巧一：快速波纹剪辑（Shift+W/Q）&lt;/strong&gt;&lt;/h1&gt;
 &lt;p&gt;许多小伙伴，在剪辑素材时，通常会通过C剃刀工具将要剪辑的内容给剪切开，或者使用Ctrl+K来切割素材，然后使用D选中素材并删除，这样会比较麻烦，其实直接按下Q或者W就可以使用波纹剪辑效果自动剪辑素材并且与之前的素材相连。如果你想相应延长一段素材至空白区域，只需要按下Shift+Q或者W即可。&lt;/p&gt;
@@ -825,9 +876,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>Armbian 环境下安装并配置 Crawl4</title>
-      <link>https://djd1226.github.io/posts/2025-07-221/</link>
+      <link>/posts/2025-07-221/</link>
       <pubDate>Tue, 22 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-221/</guid>
+      <guid>/posts/2025-07-221/</guid>
       <description>&lt;h4 id=&#34;-前言为什么-armbian-与众不同&#34;&gt;### 前言：为什么 Armbian 与众不同？&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;Crawl4AI&lt;/code&gt; 是一个强大的网页抓取工具，但它依赖的底层浏览器自动化库 Playwright 官方主要提供为普通电脑/服务器（x86_64 架构）编译的浏览器。我们的 Armbian 系统运行在 &lt;strong&gt;ARM 架构&lt;/strong&gt;上，因此无法使用官方的自动安装程序。本指南的核心就是绕过这个限制，手动配置，让 &lt;code&gt;Crawl4AI&lt;/code&gt; 在 Armbian 上完美运行。&lt;/p&gt;
 &lt;hr&gt;
@@ -862,9 +913,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>rclone挂载谷歌网盘</title>
-      <link>https://djd1226.github.io/posts/2025-07-22/</link>
+      <link>/posts/2025-07-22/</link>
       <pubDate>Tue, 22 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-22/</guid>
+      <guid>/posts/2025-07-22/</guid>
       <description>&lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -924,9 +975,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>vaultwarden直接deb文件安装</title>
-      <link>https://djd1226.github.io/posts/2025-07-201/</link>
+      <link>/posts/2025-07-201/</link>
       <pubDate>Sun, 20 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-201/</guid>
+      <guid>/posts/2025-07-201/</guid>
       <description>&lt;p&gt;vaultwarden&lt;code&gt;.deb&lt;/code&gt; 包&lt;strong&gt;只包含了后端程序&lt;/strong&gt;，它需要另一个独立的包来提供前端界面。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;-解决方案-&#34;&gt;## 解决方案 🛠️&lt;/h3&gt;
@@ -972,9 +1023,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>编译Rust之Stump电子书库</title>
-      <link>https://djd1226.github.io/posts/2025-07-20/</link>
+      <link>/posts/2025-07-20/</link>
       <pubDate>Sun, 20 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-20/</guid>
+      <guid>/posts/2025-07-20/</guid>
       <description>&lt;p&gt;这就是编译和部署中最经典的困境：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1029,9 +1080,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>CSS选择器详解</title>
-      <link>https://djd1226.github.io/posts/2025-07-14/</link>
+      <link>/posts/2025-07-14/</link>
       <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-14/</guid>
+      <guid>/posts/2025-07-14/</guid>
       <description>&lt;p&gt;首先，一个核心概念要明确：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;CSS选择器是一套独立的“语言”，它本身与Python或JavaScript无关。&lt;/strong&gt; 无论你在哪里使用它，语法规则都是完全一样的。&lt;/p&gt;
 &lt;ul&gt;
@@ -1105,9 +1156,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>n8n使用code节点清洗数据</title>
-      <link>https://djd1226.github.io/posts/2025-07-13/</link>
+      <link>/posts/2025-07-13/</link>
       <pubDate>Sun, 13 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-13/</guid>
+      <guid>/posts/2025-07-13/</guid>
       <description>&lt;p&gt;&lt;strong&gt;crawl4ai真实数据结构&lt;/strong&gt;，&lt;code&gt;raw_markdown&lt;/code&gt; 的正确路径是：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;item.json.results[0].markdown_v2.raw_markdown&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;我们来分解一下这个正确的路径：&lt;/p&gt;
@@ -1205,9 +1256,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>正确的Python Code Crawl4ai节点脚本</title>
-      <link>https://djd1226.github.io/posts/2025-07-11/</link>
+      <link>/posts/2025-07-11/</link>
       <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-11/</guid>
+      <guid>/posts/2025-07-11/</guid>
       <description>&lt;h3 id=&#34;正确的-python-code-___crawl4ai-节点脚本&#34;&gt;正确的 Python Code ___Crawl4ai 节点脚本&lt;/h3&gt;
 &lt;p&gt;这次的方案不再依赖任何需要从外部安装的第三方库，而是完全使用了 n8n 的 Python (Pyodide) 环境内置的、专门为此设计的工具。它绕开了所有关于操作系统权限和模块缺失的限制。&lt;/p&gt;
 &lt;p&gt;请将 Code 节点中的代码&lt;strong&gt;完整替换&lt;/strong&gt;为以下内容：&lt;/p&gt;
@@ -1268,9 +1319,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>HF部署的Crawl4AI  API 端点用途详解</title>
-      <link>https://djd1226.github.io/posts/2025-07-08/</link>
+      <link>/posts/2025-07-08/</link>
       <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-08/</guid>
+      <guid>/posts/2025-07-08/</guid>
       <description>&lt;p&gt;我们可以把这些端点分为两大类：&lt;strong&gt;核心爬取功能&lt;/strong&gt;和&lt;strong&gt;辅助功能&lt;/strong&gt;。&lt;/p&gt;
 &lt;h4 id=&#34;核心爬取功能&#34;&gt;核心爬取功能&lt;/h4&gt;
 &lt;h5 id=&#34;1-post-crawl_sync-同步爬取---您正在使用的&#34;&gt;1. &lt;code&gt;POST /crawl_sync&lt;/code&gt; (同步爬取 - 您正在使用的)&lt;/h5&gt;
@@ -1332,9 +1383,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>API 请求映射到 n8n</title>
-      <link>https://djd1226.github.io/posts/2025-07-07/</link>
+      <link>/posts/2025-07-07/</link>
       <pubDate>Mon, 07 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-07-07/</guid>
+      <guid>/posts/2025-07-07/</guid>
       <description>&lt;p&gt;如何将任何代码（无论是 &lt;code&gt;curl&lt;/code&gt;、Python 还是 JavaScript）中的 API 请求，映射到 n8n 的 HTTP Request 节点上。&lt;/p&gt;
 &lt;h3 id=&#34;第一步理解一个-api-请求的四要素&#34;&gt;第一步：理解一个 API 请求的“四要素”&lt;/h3&gt;
 &lt;p&gt;无论用什么工具，一个标准的 HTTP API 请求（特别是 &lt;code&gt;POST&lt;/code&gt; 请求）通常都由四个核心部分组成，就像寄一个快递一样：&lt;/p&gt;
@@ -1380,9 +1431,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>从搜狗双拼切换到小鹤双拼面</title>
-      <link>https://djd1226.github.io/posts/2025-06-21/</link>
+      <link>/posts/2025-06-21/</link>
       <pubDate>Sat, 21 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-06-21/</guid>
+      <guid>/posts/2025-06-21/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;零声母音节的处理方式&lt;/strong&gt;（这是最根本的区别）。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;部分韵母的键位定义&lt;/strong&gt;。&lt;/li&gt;
@@ -1489,9 +1540,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>自选Reality的目标网站</title>
-      <link>https://djd1226.github.io/posts/2025-05-28/</link>
+      <link>/posts/2025-05-28/</link>
       <pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-28/</guid>
+      <guid>/posts/2025-05-28/</guid>
       <description>&lt;h2 id=&#34;选择目标网站需满足的条件目标网站要满足4个条件&#34;&gt;选择目标网站需满足的条件目标网站要满足4个条件：&lt;/h2&gt;
 &lt;p&gt;最主要的是TLs1.3、H2协议和是否套了CDN&lt;/p&gt;
 &lt;ul&gt;
@@ -1529,9 +1580,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>使用 `sabre/dav` 库----WebDAV 教程</title>
-      <link>https://djd1226.github.io/posts/2025-05-25/</link>
+      <link>/posts/2025-05-25/</link>
       <pubDate>Sun, 25 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-25/</guid>
+      <guid>/posts/2025-05-25/</guid>
       <description>&lt;h2 id=&#34;安装sabredav-库&#34;&gt;安装&lt;code&gt;sabre/dav&lt;/code&gt; 库&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;WebDAV 入门教程 (基于 sabre/dav)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;第一部分：什么是 WebDAV？&lt;/strong&gt;&lt;/p&gt;
@@ -1557,9 +1608,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>Cloudflare&#43;resend无限多企业邮箱，可收发邮件</title>
-      <link>https://djd1226.github.io/posts/2025-05-20/</link>
+      <link>/posts/2025-05-20/</link>
       <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-20/</guid>
+      <guid>/posts/2025-05-20/</guid>
       <description>&lt;h3 id=&#34;在赛博大善人cloudflare那里白嫖无限多个企业级邮箱这些邮箱既可以收邮件也可以发邮件&#34;&gt;在赛博大善人cloudflare那里白嫖无限多个企业级邮箱，这些邮箱既可以收邮件，也可以发邮件。&lt;/h3&gt;
 &lt;p&gt;可以用来接收网站验证码，注册账户的时候就可以很方便的注册一大堆小号。 还可以把他们当成临时邮箱，与人通信，避免暴露自己真实的邮箱，保护个人隐私。 Cloudflare是一家提供CDN、网络安全、DDos防御和域名服务的公司。人称大善人，赛博活佛，让你瞬间获得无限多个免费邮箱!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;我已经配置好了所有发送到me.xyz域名下面的邮件都会自动转到我的163的邮箱&lt;/strong&gt; 。这样就实现了无限多个邮箱可以收邮件！&lt;/p&gt;
@@ -1601,9 +1652,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>Nginx 配置反向代理指向本机的不同服务</title>
-      <link>https://djd1226.github.io/posts/2025-05-18/</link>
+      <link>/posts/2025-05-18/</link>
       <pubDate>Sun, 18 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-18/</guid>
+      <guid>/posts/2025-05-18/</guid>
       <description>&lt;p&gt;通用的 &lt;strong&gt;Nginx 配置&lt;/strong&gt;，通过 &lt;strong&gt;反向代理&lt;/strong&gt; 将不同的域名指向本机的不同服务。所有的虚拟主机都会监听 &lt;strong&gt;80 端口&lt;/strong&gt;，但通过不同的 &lt;code&gt;server_name&lt;/code&gt; 来访问不同的服务。&lt;/p&gt;
 &lt;h3 id=&#34;配置示例&#34;&gt;配置示例&lt;/h3&gt;
 &lt;p&gt;假设你有多个服务运行在本机的不同端口上（例如 8080, 8081, 8082 等），并且你希望通过不同的域名来访问这些服务。&lt;/p&gt;
@@ -1682,9 +1733,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>使用pyenv编译Python项目为PEX文件</title>
-      <link>https://djd1226.github.io/posts/2025-05-16/</link>
+      <link>/posts/2025-05-16/</link>
       <pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-16/</guid>
+      <guid>/posts/2025-05-16/</guid>
       <description>&lt;h2 id=&#34;前提条件&#34;&gt;前提条件&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;安装 &lt;code&gt;pyenv&lt;/code&gt;&lt;/strong&gt;
 &lt;code&gt;pyenv&lt;/code&gt; 是 Python 版本管理工具，用来管理不同的 Python 版本。你需要先安装 &lt;code&gt;pyenv&lt;/code&gt; 和 &lt;code&gt;pyenv-virtualenv&lt;/code&gt;。&lt;/p&gt;
@@ -1712,9 +1763,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>带有中文注释的 `.vimrc` 配置文件示例</title>
-      <link>https://djd1226.github.io/posts/2025-05-13/</link>
+      <link>/posts/2025-05-13/</link>
       <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-13/</guid>
+      <guid>/posts/2025-05-13/</guid>
       <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;#34; 设置基础选项&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;number&lt;/span&gt;                  &lt;span class=&#34;c&#34;&gt;&amp;#34; 显示行号&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;tabstop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;4&lt;/span&gt;               &lt;span class=&#34;c&#34;&gt;&amp;#34; 设置 Tab 宽度为 4（表示一个 Tab 占 4 个空格）&lt;/span&gt;
@@ -1756,9 +1807,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>在PowerShell中并进行go交叉编译</title>
-      <link>https://djd1226.github.io/posts/2025-05-131/</link>
+      <link>/posts/2025-05-131/</link>
       <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-131/</guid>
+      <guid>/posts/2025-05-131/</guid>
       <description>&lt;p&gt;在 PowerShell 中，设置环境变量的语法与 cmd 不同。你需要使用 &lt;code&gt;$env:&lt;/code&gt; 来设置环境变量。这里是你如何在 PowerShell 中进行交叉编译：&lt;/p&gt;
 &lt;h4 id=&#34;1-设置环境变量&#34;&gt;1. &lt;strong&gt;设置环境变量&lt;/strong&gt;&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$env:GOOS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;linux&amp;#34;&lt;/span&gt;
@@ -1797,9 +1848,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>在 Debian 系统上安装 `oh-my-zsh`自动脚本</title>
-      <link>https://djd1226.github.io/posts/2025-05-11/</link>
+      <link>/posts/2025-05-11/</link>
       <pubDate>Sun, 11 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-11/</guid>
+      <guid>/posts/2025-05-11/</guid>
       <description>&lt;p&gt;并添加高亮插件和自动补全插件，最后更新 &lt;code&gt;.zshrc&lt;/code&gt; 配置文件。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -1869,9 +1920,9 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>WordPress 文章完美转换 Markdown 方法</title>
-      <link>https://djd1226.github.io/posts/2025-05-06/</link>
+      <link>/posts/2025-05-06/</link>
       <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-05-06/</guid>
+      <guid>/posts/2025-05-06/</guid>
       <description>&lt;p&gt;最近换用了 Markdown 写文, 但是博客中以前的文章不是 Markdown 格式, 想把它们转换为 Markdown 格式, 偶然发现了 wordpress-export-to-markdown 这个项目,可以导出页面, 评论, 文章, 图片. 试用了一下, 效果非常不错, 图片也能很好的处理, 今天来为大家介绍使用方法.&lt;/p&gt;
 &lt;h2 id=&#34;下载-nodejs&#34;&gt;下载 Node.js&lt;/h2&gt;
 &lt;p&gt;访问 [Node.js](&lt;a href=&#34;https://nodejs.org/zh-cn/&#34;&gt;https://nodejs.org/zh-cn/&lt;/a&gt;官网, 下载长期维护版即可.&lt;/p&gt;
@@ -1896,215 +1947,215 @@ Supabase 的保活机制监测的是 API 活跃度。只要你的脚本向数据
     </item>
     <item>
       <title>Docker 部署IPTV</title>
-      <link>https://djd1226.github.io/posts/2025-5-16/</link>
+      <link>/posts/2025-5-16/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-16/</guid>
+      <guid>/posts/2025-5-16/</guid>
       <description>&lt;p&gt;iTV（Doubebly）原作者库已经不能下载_&lt;/p&gt;</description>
     </item>
     <item>
       <title>使用Termux搭建Samba服务器</title>
-      <link>https://djd1226.github.io/posts/2025-5-9/</link>
+      <link>/posts/2025-5-9/</link>
       <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-9/</guid>
+      <guid>/posts/2025-5-9/</guid>
       <description></description>
     </item>
     <item>
       <title>google搜索语法</title>
-      <link>https://djd1226.github.io/posts/2025-5-17/</link>
+      <link>/posts/2025-5-17/</link>
       <pubDate>Mon, 14 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-17/</guid>
+      <guid>/posts/2025-5-17/</guid>
       <description>&lt;p&gt;Google是全球最大的搜索引擎公司，每天处理数以亿计的搜索请求。灵活运用google搜索技巧可以帮助我们更快速更准确的在浩瀚的互联网中找到需要的信息。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Serv00-PHP说明文档</title>
-      <link>https://djd1226.github.io/posts/2025-5-1/</link>
+      <link>/posts/2025-5-1/</link>
       <pubDate>Fri, 13 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-1/</guid>
+      <guid>/posts/2025-5-1/</guid>
       <description>&lt;p&gt;PHP教程说明文档&lt;/p&gt;
 &lt;p&gt;PHP是一种面向对象的编程语言，设计用于实时生成网页并构建Web应用程序。&lt;/p&gt;</description>
     </item>
     <item>
       <title>serv00安装FreshRSS</title>
-      <link>https://djd1226.github.io/posts/2025-5-2/</link>
+      <link>/posts/2025-5-2/</link>
       <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-2/</guid>
+      <guid>/posts/2025-5-2/</guid>
       <description>&lt;p&gt;serv00安装FreshRSS&lt;/p&gt;</description>
     </item>
     <item>
       <title>在共享主机serv00上安装wallabag</title>
-      <link>https://djd1226.github.io/posts/2025-5-12/</link>
+      <link>/posts/2025-5-12/</link>
       <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-12/</guid>
+      <guid>/posts/2025-5-12/</guid>
       <description>&lt;p&gt;在共享主机上安装wallabag&lt;/p&gt;</description>
     </item>
     <item>
       <title>安装 Anki 的同步服务器</title>
-      <link>https://djd1226.github.io/posts/2025-5-6/</link>
+      <link>/posts/2025-5-6/</link>
       <pubDate>Sun, 08 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-6/</guid>
+      <guid>/posts/2025-5-6/</guid>
       <description>&lt;p&gt;安装 Anki 的同步服务器&lt;/p&gt;</description>
     </item>
     <item>
       <title>serv00 恢复如初</title>
-      <link>https://djd1226.github.io/posts/2025-5-3/</link>
+      <link>/posts/2025-5-3/</link>
       <pubDate>Sat, 31 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-3/</guid>
+      <guid>/posts/2025-5-3/</guid>
       <description>&lt;p&gt;清除PM2进程&lt;/p&gt;
 &lt;p&gt;列出进程清单 pm2 list 恢复已保存列表的进程 &lt;code&gt;~/.npm-global/bin/pm2 resurrect&lt;/code&gt; 停止所有进程 &lt;code&gt;pm2 stop all&lt;/code&gt; 删除所有进程 &lt;code&gt;pm2 delete all&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Serv00 进程保活最终解决方案</title>
-      <link>https://djd1226.github.io/posts/2025-5-5/</link>
+      <link>/posts/2025-5-5/</link>
       <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-5/</guid>
+      <guid>/posts/2025-5-5/</guid>
       <description>&lt;p&gt;Serv00 进程保活最终解决方案&lt;/p&gt;</description>
     </item>
     <item>
       <title>chat2api添加vercel代理设置</title>
-      <link>https://djd1226.github.io/posts/2025-5-15/</link>
+      <link>/posts/2025-5-15/</link>
       <pubDate>Sat, 17 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-15/</guid>
+      <guid>/posts/2025-5-15/</guid>
       <description>&lt;p&gt;为了防止被人追踪，也为了自己的 IP 安全，可以先搭建一个 HTTP 代理：&lt;/p&gt;</description>
     </item>
     <item>
       <title>使用虚拟环境启动Python项目</title>
-      <link>https://djd1226.github.io/posts/2025-5-10/</link>
+      <link>/posts/2025-5-10/</link>
       <pubDate>Sat, 17 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-10/</guid>
+      <guid>/posts/2025-5-10/</guid>
       <description>&lt;p&gt;在Python项目中，使用虚拟环境是为了隔离项目的依赖，避免依赖包版本冲突问题。虚拟环境使得每个项目可以有自己的依赖包，并且这些包不会影响到系统全局的Python环境或其他项目。&lt;/p&gt;</description>
     </item>
     <item>
       <title>serv00教程-node.js</title>
-      <link>https://djd1226.github.io/posts/2025-5-4/</link>
+      <link>/posts/2025-5-4/</link>
       <pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-4/</guid>
+      <guid>/posts/2025-5-4/</guid>
       <description>&lt;p&gt;Node.js 使用教程&lt;/p&gt;</description>
     </item>
     <item>
       <title>如何在Serv00.com服务器上使用Python的虚拟环境</title>
-      <link>https://djd1226.github.io/posts/2025-5-8/</link>
+      <link>/posts/2025-5-8/</link>
       <pubDate>Sat, 20 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-8/</guid>
+      <guid>/posts/2025-5-8/</guid>
       <description>&lt;p&gt;如何在Serv00.com服务器上使用Python的虚拟环境。&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;preview.jpeg&#34; loading=&#34;lazy&#34; src=&#34;https://pub-205cbc55af97469188f80389cf5dc778.r2.dev/2024/07/20/669b27b093093.jpeg&#34; title=&#34;preview.jpeg&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>《星际争霸1》常用的编队技巧：</title>
-      <link>https://djd1226.github.io/posts/24_07_10/</link>
+      <link>/posts/24_07_10/</link>
       <pubDate>Wed, 10 Jul 2024 07:59:31 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/24_07_10/</guid>
+      <guid>/posts/24_07_10/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>【实操篇】阿里云盘CDN直链提取</title>
-      <link>https://djd1226.github.io/posts/2025-5-14/</link>
+      <link>/posts/2025-5-14/</link>
       <pubDate>Wed, 26 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-14/</guid>
+      <guid>/posts/2025-5-14/</guid>
       <description>&lt;p&gt;阿里云盘cdn直链提取的教程&lt;/p&gt;</description>
     </item>
     <item>
       <title>Serv00搭建各种服务</title>
-      <link>https://djd1226.github.io/posts/2025-5-132/</link>
+      <link>/posts/2025-5-132/</link>
       <pubDate>Sat, 20 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-132/</guid>
+      <guid>/posts/2025-5-132/</guid>
       <description>&lt;p&gt;这个平台是个 Virtual Host ，没有 Root ，还是 FreeBSD 的系统，不是 Linux ，不太好用。但是优点是隔离性差， Memory 和 vCPU 能短时间内超过 100% 进行调用。&lt;/p&gt;</description>
     </item>
     <item>
       <title>vim添加美化样式插件</title>
-      <link>https://djd1226.github.io/posts/24_04_18/</link>
+      <link>/posts/24_04_18/</link>
       <pubDate>Thu, 18 Apr 2024 00:53:35 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/24_04_18/</guid>
+      <guid>/posts/24_04_18/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>部署免费的GPT-API，实现GPT自由！</title>
-      <link>https://djd1226.github.io/posts/2025-5-7/</link>
+      <link>/posts/2025-5-7/</link>
       <pubDate>Thu, 04 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-7/</guid>
+      <guid>/posts/2025-5-7/</guid>
       <description>&lt;p&gt;render部署GPT-API教程&lt;/p&gt;</description>
     </item>
     <item>
       <title>学习部署FreeGPT35</title>
-      <link>https://djd1226.github.io/posts/2025-5-11/</link>
+      <link>/posts/2025-5-11/</link>
       <pubDate>Wed, 03 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/2025-5-11/</guid>
+      <guid>/posts/2025-5-11/</guid>
       <description>&lt;p&gt;我试着部署了一下，分别通过github账户，登录了两个网站，并且都部署了missuo/FreeGPT35（Glitch和Render),但可是我不会用，先做个记录把！&lt;/p&gt;</description>
     </item>
     <item>
       <title>与GitHub仓库同步</title>
-      <link>https://djd1226.github.io/posts/24_03_07/</link>
+      <link>/posts/24_03_07/</link>
       <pubDate>Thu, 07 Mar 2024 12:21:20 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/24_03_07/</guid>
+      <guid>/posts/24_03_07/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>旅游日志制作：PR（Adobe Premiere R）</title>
-      <link>https://djd1226.github.io/posts/24_03_02/</link>
+      <link>/posts/24_03_02/</link>
       <pubDate>Sat, 02 Mar 2024 13:17:54 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/24_03_02/</guid>
+      <guid>/posts/24_03_02/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>使用Python实现自动化：轻松操控Hugo和Git</title>
-      <link>https://djd1226.github.io/posts/24_01_051/</link>
+      <link>/posts/24_01_051/</link>
       <pubDate>Fri, 05 Jan 2024 13:39:59 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/24_01_051/</guid>
+      <guid>/posts/24_01_051/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>面对python爬虫练习的困境与决策：一次失败与放弃的思考</title>
-      <link>https://djd1226.github.io/posts/24_01_05/</link>
+      <link>/posts/24_01_05/</link>
       <pubDate>Fri, 05 Jan 2024 13:16:57 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/24_01_05/</guid>
+      <guid>/posts/24_01_05/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>编写一个简单的Shell脚本来执行Hugo任务</title>
-      <link>https://djd1226.github.io/posts/23_12_31/</link>
+      <link>/posts/23_12_31/</link>
       <pubDate>Sun, 31 Dec 2023 12:53:50 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/23_12_31/</guid>
+      <guid>/posts/23_12_31/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>使用frp进行内网穿透并结合Cloudflare和Cloudns实现免费域名访问</title>
-      <link>https://djd1226.github.io/posts/23_12_30/</link>
+      <link>/posts/23_12_30/</link>
       <pubDate>Sat, 30 Dec 2023 12:20:26 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/23_12_30/</guid>
+      <guid>/posts/23_12_30/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>提升Anki学习效率：自制卡牌的高级技巧</title>
-      <link>https://djd1226.github.io/posts/23_12_29/</link>
+      <link>/posts/23_12_29/</link>
       <pubDate>Fri, 29 Dec 2023 05:37:40 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/23_12_29/</guid>
+      <guid>/posts/23_12_29/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>使用Hugo搭建个人网站并推送到GitHub Pages</title>
-      <link>https://djd1226.github.io/posts/23_12_27/</link>
+      <link>/posts/23_12_27/</link>
       <pubDate>Wed, 27 Dec 2023 05:28:31 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/23_12_27/</guid>
+      <guid>/posts/23_12_27/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>2023对于IPTV抓包，我个人认为已经没有意义了！</title>
-      <link>https://djd1226.github.io/posts/23_12_26/</link>
+      <link>/posts/23_12_26/</link>
       <pubDate>Tue, 26 Dec 2023 11:56:52 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/23_12_26/</guid>
+      <guid>/posts/23_12_26/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>X96MAX盒子折腾记 第一篇：</title>
-      <link>https://djd1226.github.io/posts/231221/</link>
+      <link>/posts/231221/</link>
       <pubDate>Thu, 21 Dec 2023 17:18:46 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/231221/</guid>
+      <guid>/posts/231221/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
     <item>
       <title>折腾了两天免费图床，最终还是选了Github</title>
-      <link>https://djd1226.github.io/posts/23-12/</link>
+      <link>/posts/23-12/</link>
       <pubDate>Wed, 06 Dec 2023 04:56:40 +0000</pubDate>
-      <guid>https://djd1226.github.io/posts/23-12/</guid>
+      <guid>/posts/23-12/</guid>
       <description>Exaplanation on the shortcodes with personal-web</description>
     </item>
   </channel>
